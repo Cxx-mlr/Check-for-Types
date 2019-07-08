@@ -23,14 +23,14 @@ struct list
     };
 };
 
-int main() {
-    if constexpr (list <int, int>::contain <float, int, float>::value) {
+int main()
+{
+    if constexpr (list <int, int>::contain <float, int, float>::value)
         putchar('t');
-    }
 
-    else {
+    else
         putchar('f');
-    }
+	
     return 0;
 }
 ```
