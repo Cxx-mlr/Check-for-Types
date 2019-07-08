@@ -57,3 +57,4 @@ int main() {
 	return 0;
 }
 ```
+first version by Ksenia Milkand & Cxx - https://godbolt.org/z/-Rf0M9
