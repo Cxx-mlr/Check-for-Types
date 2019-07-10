@@ -21,10 +21,8 @@ struct list
         template <class element, class... elements>
         struct contain
         {
-            constexpr static bool value = std::is_base_of
-                            <identity  <type>, identities <element, elements...>>::value || 
-                                         (std::is_base_of
-                            <identity <types>, identities <element, elements...>>::value || ...);
+            constexpr static bool value = std::is_base_of <identity <type> , identities <element, elements...>>::value || 
+                                         (std::is_base_of <identity <types>, identities <element, elements...>>::value || ...);
         };
 };
 
@@ -34,13 +32,13 @@ struct _restrict_
     template <class type_0, class... type_rest>
     struct _access_to_ {
     
-        template <class type_x0, class... type_xrest>
-        constexpr static decltype(auto) process(type_x0 args0, type_xrest... arg_rest)
+        template <class type_x0, class... type_rest>
+        constexpr static decltype(auto) process(type_x0 args0, type_rest... arg_rest)
         {
             return [](auto... args)
             {
                     static_assert(!(list <type_x0, type_rest...>::template contain <element_0, element_rest...>::value &&
-                                    list <    decltype(args)...>::template contain <type_0   ,    type_rest...>::value),
+                                    list <    decltype(args)...>::template contain <   type_0, type_rest   ...>::value),
                     "bad_type_access"
                     );
 
@@ -61,4 +59,4 @@ int main() {
     return 0;
 }
 ```
-first version by Ksenia Milkand & Cxx - https://godbolt.org/z/-Rf0M9
+first version by Ksenia Milkand & Cxx - https://godbolt.org/z/IMU6KX
