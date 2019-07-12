@@ -32,19 +32,20 @@ struct _restrict_
     template <class type_0, class... type_rest>
     struct _access_to_ {
     
-        template <class type_x0, class... type_rest>
-        constexpr static decltype(auto) process(type_x0 args0, type_rest... arg_rest)
+    template <class type_x0, class... type_rest>
+    constexpr static decltype(auto) process(type_x0 args0, type_rest... arg_rest)
+    {
+        return [](auto... args)
         {
-            return [](auto... args)
-            {
-                    static_assert(!(list <type_x0, type_rest...>::template contain <element_0, element_rest...>::value &&
-                                    list <    decltype(args)...>::template contain <   type_0, type_rest   ...>::value),
-                    "bad_type_access"
-                    );
+                static_assert(!(list <type_x0, type_rest...>::template contain <element_0, element_rest...>::value &&
+                                list <    decltype(args)...>::template contain <   type_0, type_rest   ...>::value),
+                "bad_type_access"
+                );
 
                 puts("processing elements");
-            };
         };
+    };
+    
     };
 
     _restrict_() = delete;
