@@ -50,12 +50,10 @@ struct _restrict_
     _restrict_() = delete;
 };
 
-#define as )(
-
 int main() {
     using mode = _restrict_ <int>::_access_to_ <float, double>;
     //mode::process(int{} as float{}, double{}); //assert
-    mode::process(char{} as float{}, double{});
+    mode::process(char{})(float{}, double{});
     return 0;
 }
 ```
