@@ -53,7 +53,7 @@ struct _restrict_
 
 int main() {
     using mode = _restrict_ <int>::_access_to_ <float, double>;
-    //mode::process(int{} as float{}, double{}); //assert
+    //mode::process(int{})(float{}, double{}); // assert
     mode::process(char{})(float{}, double{});
     return 0;
 }
