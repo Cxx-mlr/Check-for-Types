@@ -21,8 +21,7 @@ struct list
         template <class element, class... elements>
         struct contain
         {
-            constexpr static bool value = std::is_base_of <identity <type> , identities <element, elements...>>::value || 
-                                         (std::is_base_of <identity <types>, identities <element, elements...>>::value || ...);
+            constexpr static bool value = std::is_base_of <identity <type> , identities <element, elements...>>::value || (std::is_base_of <identity <types>, identities <element, elements...>>::value || ...);
         };
 };
 
@@ -37,12 +36,11 @@ struct _restrict_
     {
         return [](auto... args)
         {
-                static_assert(!(list <type_x0, type_rest...>::template contain <element_0, element_rest...>::value &&
-                                list <    decltype(args)...>::template contain <   type_0, type_rest   ...>::value),
-                "bad_type_access"
-                );
+            static_assert(!(list <type_x0, type_rest...>::template contain <element_0, element_rest...>::value &&
+                            list <    decltype(args)...>::template contain <   type_0, type_rest   ...>::value),
+            "bad_type_access" );
 
-                puts("processing elements");
+            puts("processing elements");
         };
     };
     
@@ -53,7 +51,7 @@ struct _restrict_
 
 int main() {
     using mode = _restrict_ <int>::_access_to_ <float, double>;
-    //mode::process(int{})(float{}, double{}); // assert
+  //mode::process(int{})(float{}, double{}); // assert
     mode::process(char{})(float{}, double{});
     return 0;
 }
