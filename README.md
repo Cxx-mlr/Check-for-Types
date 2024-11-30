@@ -59,3 +59,7 @@ int main() {
 }
 ```
 1: Ksenia Milkand & Cxx - https://godbolt.org/z/IMU6KX
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
